@@ -13,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -34,6 +36,15 @@ public class ParkingLotServiceImplTest {
         ParkingLot parkingLot=parkingLotService.addPakingLot(new ParkingLot("parkinglot1",10,"place1"));
         Assert.assertNotNull(parkingLotService.deleteParkingLot(parkingLot.getId()));
 
+    }
+
+    @Test
+    public void getPakingLotsByPage() {
+        for(int i=0;i<28;i++){
+            ParkingLot parkingLot=parkingLotService.addPakingLot(new ParkingLot("parkinglot"+i,10,"place"+i));
+        }
+        List<ParkingLot> list=parkingLotService.getParkingLotsByPage(2,15);
+        Assert.assertEquals(13,list.size());
     }
 
 

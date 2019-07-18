@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ParkingLotController {
 
@@ -13,14 +15,20 @@ public class ParkingLotController {
     public ParkingLotService parkingLotService;
 
     @ResponseBody
-    @PostMapping("/parkingLots")
+    @PostMapping("/parkinglots")
     public ParkingLot addParkingLot(@RequestBody ParkingLot parkingLot) {
         return parkingLotService.addPakingLot(parkingLot);
     }
 
     @ResponseBody
-    @DeleteMapping("/parkingLots/{parkingLotId}")
+    @DeleteMapping("/parkinglots/{parkingLotId}")
     public ParkingLot addParkingLot(@PathVariable int parkingLotId) {
         return parkingLotService.deleteParkingLot(parkingLotId);
+    }
+    @ResponseBody
+    @GetMapping("/parkinglots")
+    public List<ParkingLot> getParkingLots(@RequestParam(value = "page",defaultValue = "0")int page,
+                                           @RequestParam(value = "pageSize",defaultValue = "15")int pageSize){
+       return parkingLotService.getParkingLotsByPage(page,pageSize);
     }
 }

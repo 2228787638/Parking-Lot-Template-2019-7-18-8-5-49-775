@@ -6,6 +6,8 @@ import com.thoughtworks.parking_lot.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParkingLotServiceImpl implements ParkingLotService{
     @Autowired
@@ -22,6 +24,15 @@ public class ParkingLotServiceImpl implements ParkingLotService{
             parkingLotRepository.deleteById(id);
         }
         return parkingLot;
+    }
+
+    @Override
+    public List<ParkingLot> getParkingLotsByPage(int page,int pageSize) {
+        if(page==0||pageSize==0){ return parkingLotRepository.findAll();}
+        if(parkingLotRepository.count()<page*pageSize){
+            return parkingLotRepository.findAll().subList((page-1)*pageSize,(int)parkingLotRepository.count());
+        }
+        return parkingLotRepository.findAll().subList((page-1)*pageSize,page*pageSize);
     }
 
 
