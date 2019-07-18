@@ -22,7 +22,7 @@ public class ParkingLotController {
 
     @ResponseBody
     @DeleteMapping("/parkinglots/{parkingLotId}")
-    public ParkingLot addParkingLot(@PathVariable int parkingLotId) {
+    public ParkingLot deleteParkingLot(@PathVariable int parkingLotId) {
         return parkingLotService.deleteParkingLot(parkingLotId);
     }
     @ResponseBody

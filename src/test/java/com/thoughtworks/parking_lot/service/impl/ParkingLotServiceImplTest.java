@@ -1,5 +1,6 @@
 package com.thoughtworks.parking_lot.service.impl;
 
+import com.google.gson.Gson;
 import com.thoughtworks.parking_lot.model.ParkingLot;
 import com.thoughtworks.parking_lot.repository.ParkingLotRepository;
 import com.thoughtworks.parking_lot.service.ParkingLotService;
