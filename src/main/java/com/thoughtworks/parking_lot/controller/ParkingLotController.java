@@ -18,5 +18,9 @@ public class ParkingLotController {
         return parkingLotService.addPakingLot(parkingLot);
     }
 
-
+    @ResponseBody
+    @DeleteMapping("/parkingLots/{parkingLotId}")
+    public ParkingLot addParkingLot(@PathVariable int parkingLotId) {
+        return parkingLotService.deleteParkingLot(parkingLotId);
+    }
 }

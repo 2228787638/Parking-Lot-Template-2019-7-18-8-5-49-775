@@ -15,7 +15,14 @@ public class ParkingLotServiceImpl implements ParkingLotService{
         return parkingLotRepository.save(parkingLot);
     }
 
-
+    @Override
+    public ParkingLot deleteParkingLot(int id) {
+        ParkingLot parkingLot=parkingLotRepository.findById(id).get();
+        if(parkingLot!=null) {
+            parkingLotRepository.deleteById(id);
+        }
+        return parkingLot;
+    }
 
 
 }

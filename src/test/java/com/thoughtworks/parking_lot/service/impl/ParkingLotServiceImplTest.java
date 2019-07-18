@@ -29,7 +29,12 @@ public class ParkingLotServiceImplTest {
         Assert.assertNotNull(parkingLot);
 
     }
+    @Test
+    public void deletePakingLot() {
+        ParkingLot parkingLot=parkingLotService.addPakingLot(new ParkingLot("parkinglot1",10,"place1"));
+        Assert.assertNotNull(parkingLotService.deleteParkingLot(parkingLot.getId()));
 
+    }
 
 
 
