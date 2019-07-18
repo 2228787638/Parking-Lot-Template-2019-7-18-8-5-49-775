@@ -35,5 +35,10 @@ public class ParkingLotServiceImpl implements ParkingLotService{
         return parkingLotRepository.findAll().subList((page-1)*pageSize,page*pageSize);
     }
 
+    @Override
+    public ParkingLot getParkingLotById(int id) {
+        return parkingLotRepository.findById(id).get();
+    }
+
 
 }

@@ -47,6 +47,11 @@ public class ParkingLotServiceImplTest {
         Assert.assertEquals(13,list.size());
     }
 
-
+    @Test
+    public void getPakingLotsById() {
+        parkingLotService.addPakingLot(new ParkingLot("parkinglot1",10,"place1"));
+        ParkingLot parkingLot=parkingLotService.getParkingLotById(1);
+        Assert.assertEquals(1,parkingLot.getId());
+    }
 
 }

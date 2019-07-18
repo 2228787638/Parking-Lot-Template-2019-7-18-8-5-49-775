@@ -31,4 +31,9 @@ public class ParkingLotController {
                                            @RequestParam(value = "pageSize",defaultValue = "15")int pageSize){
        return parkingLotService.getParkingLotsByPage(page,pageSize);
     }
+    @ResponseBody
+    @GetMapping("/parkinglots/{parkingLotId}")
+    public ParkingLot getParkingLotById(@PathVariable int parkingLotId){
+        return parkingLotService.getParkingLotById(parkingLotId);
+    }
 }
