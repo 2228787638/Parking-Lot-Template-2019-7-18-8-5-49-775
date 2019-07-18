@@ -53,5 +53,11 @@ public class ParkingLotServiceImplTest {
         ParkingLot parkingLot=parkingLotService.getParkingLotById(1);
         Assert.assertEquals(1,parkingLot.getId());
     }
+    @Test
+    public void updatePakingLot(){
+        parkingLotService.addPakingLot(new ParkingLot("parkinglot1",10,"place1"));
+        ParkingLot parkingLot=parkingLotService.updateParkingLot(1,new ParkingLot("",20,""));
+        Assert.assertEquals(20,parkingLot.getCapacity());
+    }
 
 }

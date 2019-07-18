@@ -40,5 +40,12 @@ public class ParkingLotServiceImpl implements ParkingLotService{
         return parkingLotRepository.findById(id).get();
     }
 
+    @Override
+    public ParkingLot updateParkingLot(int id,ParkingLot parkingLot) {
+        ParkingLot updateParkingLot=parkingLotRepository.findById(id).get();
+        updateParkingLot.setCapacity(parkingLot.getCapacity());
+        return updateParkingLot;
+    }
+
 
 }

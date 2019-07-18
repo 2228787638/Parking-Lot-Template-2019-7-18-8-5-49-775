@@ -11,4 +11,5 @@ public interface ParkingLotService {
     ParkingLot deleteParkingLot(int id);
     List<ParkingLot> getParkingLotsByPage(int page,int pageSize);
     ParkingLot getParkingLotById(int id);
+    ParkingLot updateParkingLot(int id,ParkingLot parkingLot);
 }
