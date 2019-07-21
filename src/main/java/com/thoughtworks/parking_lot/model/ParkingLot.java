@@ -25,7 +25,12 @@ public class ParkingLot {
         this.capacity = capacity;
         this.position = position;
     }
-
+    public ParkingLot(int id ,String name, @Range(min = 0) int capacity, String position) {
+        this.id=id;
+        this.name = name;
+        this.capacity = capacity;
+        this.position = position;
+    }
     public int getId() {
         return id;
     }

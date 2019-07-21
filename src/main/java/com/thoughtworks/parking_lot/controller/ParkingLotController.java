@@ -39,6 +39,7 @@ public class ParkingLotController {
     @ResponseBody
     @PutMapping("/parkinglots/{parkingLotId}")
     public ParkingLot updateParkingLot(@PathVariable int parkingLotId,@RequestBody ParkingLot parkingLot){
-        return parkingLotService.updateParkingLot(parkingLotId,parkingLot);
+        ParkingLot parkingLot1=parkingLotService.updateParkingLot(parkingLotId,parkingLot);
+        return parkingLot1;
     }
 }
