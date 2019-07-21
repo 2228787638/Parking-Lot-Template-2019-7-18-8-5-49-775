@@ -41,4 +41,12 @@ public class OrderServiceImplTest {
         Assert.assertEquals("close",reOrder.getStatus());
     }
 
+    @Test
+    public void should_return_a_order_message_when_parkinglot_have_no_capacity() throws Exception {
+        parkingLotService.addPakingLot(new ParkingLot("parkinglot",0,"place"));
+        Order order = new Order("parkinglot1","110",new Date(),new Date(),"ok");
+        Order reOrder=orderService.addOrder(1,order);
+        Assert.assertNull(reOrder);
+    }
+
 }
