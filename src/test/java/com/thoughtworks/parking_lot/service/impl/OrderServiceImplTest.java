@@ -21,11 +21,24 @@ import static org.junit.Assert.*;
 public class OrderServiceImplTest {
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private ParkingLotService parkingLotService;
     @Test
-    public void addOrder() throws Exception {
+    public void should_return_a_new_order_when_park_a_car() throws Exception {
+        parkingLotService.addPakingLot(new ParkingLot("parkinglot",2,"place"));
         Order order = new Order("parkinglot1","110",new Date(),new Date(),"ok");
-        Order reOrder=orderService.addOrder(order);
+        Order reOrder=orderService.addOrder(1,order);
         Assert.assertNotNull(reOrder);
+    }
+
+    @Test
+    public void should_return_a_updated_order_when_a_car_fetch() throws Exception {
+        parkingLotService.addPakingLot(new ParkingLot("parkinglot",2,"place"));
+        Order order = new Order("parkinglot1","110",new Date(),new Date(),"ok");
+        orderService.addOrder(1,order);
+        Order newOrder = new Order("parkinglot1","110",new Date(),new Date(),"close");
+        Order reOrder=orderService.updateOrder(1,order);
+        Assert.assertEquals("close",reOrder.getStatus());
     }
 
 }
